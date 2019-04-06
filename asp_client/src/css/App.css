@@ -1,0 +1,18 @@
+*{
+  font-family: 微軟正黑體;
+  font-weight: bold;
+  text-align: center;
+  text:"zh-cn"
+}
+.App {
+  width: 100%;
+}
+.main {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-top: 7vh;
+}
+.bar {
+  align-items: center;
+}
