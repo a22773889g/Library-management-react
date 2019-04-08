@@ -15,7 +15,8 @@ export default class Remove extends PureComponent {
                       .then((willDelete) => {
                         if (willDelete) {
                             this.props.remove(this.props.dataItem)
-                            swal("已成功刪除", {
+                            swal({
+                                title: "已成功刪除",
                                 icon: "success",
                             });
                         }

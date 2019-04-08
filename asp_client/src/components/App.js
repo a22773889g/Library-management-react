@@ -13,6 +13,9 @@ import { LocalizationProvider, loadMessages } from '@progress/kendo-react-intl';
 import Delivered from './Delivered'
 import Remove from './Remove'
 import zhMessages from '../zh-TW.json';
+import { Dialog } from '@progress/kendo-react-dialogs';
+import InsertForm from './InsertForm'
+import swal from 'sweetalert';
 loadMessages(zhMessages, 'zh-TW');
 class App extends PureComponent {
   constructor(props) {
@@ -26,7 +29,8 @@ class App extends PureComponent {
         filters: [
             { field: "bookName", operator: "contains", value: "" }
         ]
-    }
+      },
+      visible: false
     }
   }
 
@@ -40,13 +44,34 @@ class App extends PureComponent {
   remove = (book) =>{
     this.props.removeBook(book)
   }
-  
+  toggleDialog = () => {
+    this.setState({
+        visible: !this.state.visible
+    });
+}
+  addBookToUI = (obj)=>{
+    localStorage.setItem(obj.BookName,JSON.stringify(obj))
+    this.props.addBook(obj)
+    this.setState({
+      visible: !this.state.visible
+    },()=>{
+      swal({
+        title: "新增成功!",
+        icon: "success",
+      });
+    });
+    
+  }
   render() {
     const { skip, take, filter } = this.state
 
     return (
       <div className="App">
 
+        {this.state.visible && 
+        <Dialog title={"新增書籍"} onClose={this.toggleDialog}  minWidth="350px" height={'70vh'} width={'25vw'}>
+            <InsertForm addBook={this.addBookToUI} bookLength = {this.props.books.length}></InsertForm>
+        </Dialog>}
         <AppBar position="static" className="bar">
           <Toolbar>
             <Typography variant="h6" color="inherit" >
@@ -72,7 +97,7 @@ class App extends PureComponent {
 
                 <GridToolbar>
                 <div onClick={this.closeEdit}>
-                    <button title="新增書籍" className="k-button k-primary" onClick={this.addRecord} >
+                    <button title="新增書籍" className="k-button k-primary" onClick={this.toggleDialog} >
                     新增書籍
                 </button>
                 </div>

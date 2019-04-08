@@ -18,6 +18,8 @@ const initialState = data.map((book)=>{
         case "home":
           temp.BookCategory="家庭"
           break;
+        default:
+          break;
        }
         return temp;
 })
@@ -25,7 +27,7 @@ export default (state = initialState, action) => {
     switch (action.type) {
   
     case 'ADD_BOOK':
-      return[{ 
+      return[...state,{ 
         BookId: action.BookId,
         BookName: action.BookName,
         BookCategory: action.BookCategory,
@@ -35,7 +37,7 @@ export default (state = initialState, action) => {
         BookPrice: action.BookPrice,
         BookAmount: action.BookAmount,
         BookTotal: action.BookTotal
-      },...state];
+      }];
     case 'REMOVE_BOOK':
       return state.filter(book=>book.BookId!==action.BookId);
     default:

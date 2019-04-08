@@ -1,8 +1,6 @@
 *{
   font-family: 微軟正黑體;
   font-weight: bold;
-  text-align: center;
-  text:"zh-cn"
 }
 .App {
   width: 100%;
@@ -12,7 +10,20 @@
   justify-content: center;
   align-content: center;
   margin-top: 7vh;
+  text-align: center;
 }
 .bar {
   align-items: center;
+}
+.k-animation-container{
+  z-index: 10003
+}
+.k-master-row,.card{
+  text-align: center;
+}
+.k-form{
+  text-align: left;
+}
+input{
+  text-align: right;
 }
