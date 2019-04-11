@@ -1,17 +1,22 @@
 export const addBook = (payload) => ({
-    type: 'ADD_BOOK',
-    BookId: payload.BookId,
-    BookName: payload.BookName,
-    BookCategory: payload.BookCategory,
-    BookAuthor: payload.BookAuthor,
-    BookBoughtDate: payload.BookBoughtDate,
-    BookDeliveredDate: payload.BookDeliveredDate,
-    BookPrice: payload.BookPrice,
-    BookAmount: payload.BookAmount,
-    BookTotal: payload.BookTotal
-  })
+  type: 'ADD_BOOK',
+  bookId: payload.bookId,
+  bookName: payload.bookName,
+  bookCategory: payload.bookCategory,
+  bookAuthor: payload.bookAuthor,
+  bookBoughtDate: payload.bookBoughtDate,
+  bookDeliveredDate: payload.bookDeliveredDate,
+  bookPrice: payload.bookPrice,
+  bookAmount: payload.bookAmount,
+  bookTotal: payload.bookTotal
+})
 
 export const removeBook = (payload) => ({
-    type: 'REMOVE_BOOK',
-    BookId: payload.BookId,
-  })
+  type: 'REMOVE_BOOK',
+  bookId: payload.bookId,
+})
+
+export const initial = (payload) => ({
+  type: 'INITIAL_BOOK',
+  books: payload
+})
