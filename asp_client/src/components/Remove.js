@@ -7,7 +7,7 @@ export default class Remove extends PureComponent {
                 <button
                     className="k-button k-grid-remove-command"
                     onClick={() => swal({
-                        title: "確定刪除「" + this.props.dataItem.BookName + "」嗎?",
+                        title: "確定刪除「" + this.props.dataItem.bookName + "」嗎?",
                         icon: "warning",
                         buttons: true,
                         dangerMode: true,
